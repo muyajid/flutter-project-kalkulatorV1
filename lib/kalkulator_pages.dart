@@ -12,6 +12,13 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
   final TextEditingController _numberOneControl = TextEditingController();
   final TextEditingController _numberTwoControl = TextEditingController();
   double hasil = 0;
+  void clearInput() {
+    _numberOneControl.clear();
+    _numberTwoControl.clear();
+    setState(() {
+      hasil = 0;
+    });
+  }
 
   void calculate(String ops) {
     double angka1 = double.parse(_numberOneControl.text.trim());
@@ -39,24 +46,12 @@ class _KalkulatorPageState extends State<KalkulatorPage> {
                 backgroundColor: Colors.yellowAccent,
               ),
             );
-            _numberOneControl.clear();
-            _numberTwoControl.clear();
-            setState(() {
-              hasil = 0;
-            });
+            clearInput();
             return;
           }
           hasil = angka1 / angka2;
         default:
       }
-    });
-  }
-
-  void clearInput() {
-    _numberOneControl.clear();
-    _numberTwoControl.clear();
-    setState(() {
-      hasil = 0;
     });
   }
 
